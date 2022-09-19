@@ -1,0 +1,18 @@
+<div class="container">
+    <form [formGroup]="reminderForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="text">text</label>
+            <textarea class="form-control" formControlName="text" rows="3"></textarea>
+            <div *ngIf="reminderForm.get('text')?.touched">
+                <div *ngIf="reminderForm.get('text')?.hasError('required')" class="text-danger">
+                        required and max length 100 char
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Set Reminder Time</label>
+            <input type="datetime-local" formControlName="reminderDateTime" class="form-control"  />
+        </div>
+        <button class="btn btn-primary" type="submit">Save</button>
+    </form>
+</div>

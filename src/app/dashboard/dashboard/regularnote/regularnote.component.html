@@ -1,0 +1,14 @@
+<div class="container">
+    <form [formGroup]="regularNoteForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="text">text</label>
+            <textarea class="form-control" formControlName="text" rows="3"></textarea>
+            <div *ngIf="regularNoteForm.get('text')?.touched">
+                <div *ngIf="regularNoteForm.get('text')?.hasError('required')" class="text-danger">
+                        required and max length 100 char
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-primary" type="submit">Save</button>
+    </form>
+</div>

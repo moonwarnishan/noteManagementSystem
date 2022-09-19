@@ -1,0 +1,23 @@
+<div class="container">
+    <form [formGroup]="bookmarkForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="siteName">Site Name</label>
+            <input formControlName="siteName" class="form-control" id="siteName" placeholder="siteName">
+            <div *ngIf="bookmarkForm.get('siteName')?.touched && bookmarkForm.get('siteName')?.errors">
+                <div *ngIf="bookmarkForm.get('siteName')?.hasError('required')" class="text-danger">
+                    site name is required
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="url">URL</label>
+            <input formControlName="url" class="form-control" id="url" placeholder="url">
+            <div *ngIf="bookmarkForm.get('url')?.touched && bookmarkForm.get('url')?.errors">
+                <div *ngIf="bookmarkForm.get('url')?.hasError('required')" class="text-danger">
+                    site name is required
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-primary" type="submit">submit</button>
+    </form>
+</div>

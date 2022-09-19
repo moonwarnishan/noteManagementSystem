@@ -1,0 +1,136 @@
+<div class="container">
+    <div class="row">
+        <div class="col rounded border border-primary m-2 p-2">
+            <h3>Regular Note</h3>
+            <div  class="border border-dark m-2" *ngFor="let x of regularNoteData">
+                <div class="m-2">{{x.text}}</div>
+                <div class="row">
+                    <div class="col">
+                    <div class="m-2 btn btn-warning" (click)="UpdateRegular(x)">update</div>
+                    </div>
+                    <div class="col">
+                        <div class=" m-2 btn btn-danger" (click)="deleteRegularNote(x)" >Delete</div>
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-primary m-2" routerLink="regularnote">add new</button>
+        </div>
+        <div class="col rounded border border-primary m-2 p-2">
+            <h3>Reminder</h3>
+            <div class="border border-dark m-2" *ngFor="let x of reminderData">
+                <div class="m-2">{{x.text}}</div>
+                <div class="m-2">{{x.reminderDateTime}}</div>
+                <div class="row">
+                    <div class="col">
+                    <div class="m-2 btn btn-warning" (click)="updateReminder(x)">update</div>
+                    </div>
+                    <div class="col">
+                        <div class=" m-2 btn btn-danger" (click)="DeleteReminderValue(x)">Delete</div>
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-primary m-2" routerLink="reminder">add new</button>
+        </div>
+        <div class="col rounded border border-primary m-2 p-2">
+            <h3>todo</h3>
+            <div class="border border-dark m-2" *ngFor="let x of todoData">
+                <div class="m-2">{{x.text}}</div>
+                <div class="m-2">{{x.todoDateTime}}</div>
+                <div class="row">
+                    <div class="col">
+                    <div class="m-2 btn btn-warning" (click)="Updatetodo(x)">update</div>
+                    </div>
+                    <div class="col">
+                        <div class=" m-2 btn btn-danger" (click)="DeletetodoValue(x)">Delete</div>
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-primary m-2" routerLink="todo">add new</button>
+        </div>
+        
+        <div class="col rounded border border-primary m-2 p-2">
+            <h3>book marks</h3>
+            <div class="border border-dark m-2" *ngFor="let x of bookmarkData">
+                <div class="m-2">
+                    <a href="{{x.url}}">{{x.siteName}}</a>
+                </div>
+                <div class="row">
+                    <div class="col">
+                    <div class="m-2 btn btn-warning" (click)="updateBookmark(x)">update</div>
+                    </div>
+                    <div class="col">
+                        <div class=" m-2 btn btn-danger" (click)=" deleteBookmark(x)">Delete</div>
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-primary m-2" routerLink="bookmark">add new</button>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <h1>Notifications</h1>
+
+    <h2>Reminders</h2>
+    <div class="row">
+        
+        <div class="col border border-dark m-2">
+            <h4>today</h4>
+            <div class="border border-dark m-2" *ngFor="let x of remindDays">
+                <div class="m-2">{{x.text}}</div>
+                <div class="m-2">{{x.reminderDateTime}}</div>
+            </div>
+
+        </div>
+        <div class="col border border-dark m-2">
+            <h4>this week</h4>
+            <div class="border border-dark m-2" *ngFor="let x of remindWeeks">
+                <div class="m-2">{{x.text}}</div>
+                <div class="m-2">{{x.reminderDateTime}}</div>
+            </div>
+
+        </div>
+        <div class="col border border-dark m-2">
+            <h4>this month</h4>
+            <div class="border border-dark m-2" *ngFor="let x of remindMonth">
+                <div class="m-2">{{x.text}}</div>
+                <div class="m-2">{{x.reminderDateTime}}</div>
+            </div>
+        </div>
+
+    </div>
+
+    <h2>todo</h2>
+    <div class="row">
+        
+        <div class="col border border-dark m-2">
+            <h4>today</h4>
+            <div class="col border border-dark m-2">
+                <div class="border border-dark m-2" *ngFor="let x of todoWeeks">
+                    <div class="m-2">{{x.text}}</div>
+                    <div class="m-2">{{x.todoDateTime}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="col border border-dark m-2">
+            <h4>this week</h4>
+            <div class="col border border-dark m-2">
+                <div class="border border-dark m-2" *ngFor="let x of todoWeeks">
+                    <div class="m-2">{{x.text}}</div>
+                    <div class="m-2">{{x.todoDateTime}}</div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col border border-dark m-2">
+            <h4>this month</h4>
+            <div class="col border border-dark m-2">
+                <div class="border border-dark m-2" *ngFor="let x of todoMonth">
+                    <div class="m-2">{{x.text}}</div>
+                    <div class="m-2">{{x.todoDateTime}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

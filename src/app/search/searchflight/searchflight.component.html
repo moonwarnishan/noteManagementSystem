@@ -1,0 +1,78 @@
+<div class="container">
+    <form [formGroup]="SearchFlightForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label>Origin</label>
+            <ng-autocomplete
+            [data]="airports"
+            (keyup)="onKeySearch($event)"
+            [searchKeyword]="keyword"
+            placeholder="Enter the Country Name"
+            [itemTemplate]="itemTemplate">
+          </ng-autocomplete>
+        
+          <ng-template #itemTemplate let-item>
+            <a [innerHTML]="item.AirportCode"></a>
+          </ng-template>
+        </div>
+
+        
+        <div class="form-group">
+            <label>Destination</label>
+            <input autoComplete="on" class="form-control" formControlName="Destination" placeholder="Search" (keyup)="onKeySearch($event)">
+        </div>
+
+        <div class="form-group">
+            <label>DepartureDate</label>
+            <input type="date" formControlName="DepartureDate" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label>Class Type</label>
+            <select class="form-control" name="Class" formControlName="ClassType">
+                <option value="Economy">Economy</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col">
+                    <label>NoOfInfant</label>
+                    <select class="form-control" name="Class" formControlName="NoOfInfant">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label>no of child</label>
+                    <select class="form-control" name="Class" formControlName="NoOfChildren">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label>no of Adults</label>
+                    <select class="form-control" name="Class" formControlName="NoOfAdult">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <button type="submit" class="btn btn-primary">Searchs</button>
+    </form>
+</div>

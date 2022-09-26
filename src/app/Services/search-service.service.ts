@@ -17,4 +17,10 @@ export class SearchServiceService {
       return this.http.get(this.allapiService.getLocations+data);
      }
 
+     //post flight details
+     postFlightDetails(data : any)
+     {
+        return this.http.post(this.allapiService.postLocation,data);
+     }
+
 }

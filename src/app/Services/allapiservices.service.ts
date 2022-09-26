@@ -9,6 +9,7 @@ export class AllapiservicesService {
   baseUrl="https://www.buytickets.com.bd/api/";
 
   getLocations = this.baseUrl + "Auto/GetCities/?input=";
-  
+  postLocation = this.baseUrl+"air/UnauthorizeSearchAir/";
+
   
 }

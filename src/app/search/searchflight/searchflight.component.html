@@ -1,24 +1,60 @@
+
+
+
+
+
 <div class="container">
     <form [formGroup]="SearchFlightForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
-            <label>Origin</label>
-            <ng-autocomplete
-            [data]="airports"
-            (keyup)="onKeySearch($event)"
-            [searchKeyword]="keyword"
-            placeholder="Enter the Country Name"
-            [itemTemplate]="itemTemplate">
-          </ng-autocomplete>
-        
-          <ng-template #itemTemplate let-item>
-            <a [innerHTML]="item.AirportCode"></a>
-          </ng-template>
+            <label >Origin</label>
+            <div class="ng-autocomplete">
+                <ng-autocomplete
+                 formControlName="Origin"
+                 (keyup)="onKeySearch($event)"
+                  [data]="airports"
+                  [searchKeyword]="keyword"
+                  placeholder="Enter the State Name"
+                  historyIdentifier="airports"
+                  [itemTemplate]="itemTemplate"
+                  [notFoundTemplate]="notFoundTemplate">
+                </ng-autocomplete>
+              
+                <ng-template #itemTemplate let-item>
+                  <div class="item">
+                    <span [innerHTML]="item.SearchString"></span> ;
+                    <span>{{item.AirportCode}}</span>
+                  </div>
+                </ng-template>
+              
+                <ng-template #notFoundTemplate let-notFound>
+                  <div [innerHTML]="notFound"></div>
+                </ng-template>
+              </div>
         </div>
-
         
         <div class="form-group">
-            <label>Destination</label>
-            <input autoComplete="on" class="form-control" formControlName="Destination" placeholder="Search" (keyup)="onKeySearch($event)">
+            <label >Destination</label>
+            <div class="ng-autocomplete">
+                <ng-autocomplete
+                 formControlName="Destination"
+                  (keyup)="onKeySearch($event)"
+                  [data]="airports"
+                  [searchKeyword]="keyword"
+                  placeholder="Enter the State Name"
+                  [itemTemplate]="itemTemplate"
+                  [notFoundTemplate]="notFoundTemplate">
+                </ng-autocomplete>
+              
+                <ng-template #itemTemplate let-item  >
+                  <div class="item">
+                    <span [innerHTML]="item.AirportCode"></span>
+                  </div>
+                </ng-template>
+              
+                <ng-template #notFoundTemplate let-notFound>
+                  <div [innerHTML]="notFound"></div>
+                </ng-template>
+              </div>
         </div>
 
         <div class="form-group">
@@ -37,6 +73,7 @@
                 <div class="col">
                     <label>NoOfInfant</label>
                     <select class="form-control" name="Class" formControlName="NoOfInfant">
+                        <option value="0">0</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -48,6 +85,7 @@
                 <div class="col">
                     <label>no of child</label>
                     <select class="form-control" name="Class" formControlName="NoOfChildren">
+                        <option value="0">0</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -59,6 +97,7 @@
                 <div class="col">
                     <label>no of Adults</label>
                     <select class="form-control" name="Class" formControlName="NoOfAdult">
+                        <option value="0">0</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -69,9 +108,6 @@
                 </div>
             </div>
         </div>
-
-
-
 
         <button type="submit" class="btn btn-primary">Searchs</button>
     </form>

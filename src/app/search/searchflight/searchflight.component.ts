@@ -8,76 +8,31 @@ import { SearchServiceService } from 'src/app/Services/search-service.service';
   styleUrls: ['./searchflight.component.css']
 })
 export class SearchflightComponent implements OnInit {
-  public countries = [
-    {
-      id: 1,
-      name: 'Albania',
-    },
-    {
-      id: 2,
-      name: 'Belgium',
-    },
-    {
-      id: 3,
-      name: 'Denmark',
-    },
-    {
-      id: 4,
-      name: 'Montenegro',
-    },
-    {
-      id: 5,
-      name: 'Turkey',
-    },
-    {
-      id: 6,
-      name: 'Ukraine',
-    },
-    {
-      id: 7,
-      name: 'Macedonia',
-    },
-    {
-      id: 8,
-      name: 'Slovenia',
-    },
-    {
-      id: 9,
-      name: 'Georgia',
-    },
-    {
-      id: 10,
-      name: 'India',
-    },
-    {
-      id: 11,
-      name: 'Russia',
-    },
-    {
-      id: 12,
-      name: 'Switzerland',
-    }
-  ];
 
-
-
-
+  
+  keyword = 'SearchString';
+  airports:any[]=[];
+  consumeData : any;
+  response : any;
   SearchFlightForm : FormGroup
   timeout :any=null;
-  airports : any[]=[];
-  keyword = 'name';
+
+  anotherform : FormGroup;
+  //keyword = 'name';
   constructor(
     private formBuilder : FormBuilder,
     private searchService : SearchServiceService
   ) { 
     this.SearchFlightForm=this.formBuilder.group({
-      Origin : ['',Validators.required],
+      Origin: ['',Validators.required],
       Destination : ['',Validators.required],
       DepartureDate :['',Validators.required],
+      JourneyType:[1,Validators.required],
       ClassType:['',Validators.required],
       NoOfInfant:['',Validators.required],
       NoOfChildren:['',Validators.required],
-      NoOfAdult:['',Validators.required]
+      NoOfAdult:['',Validators.required],
+      ReturnDate:['']
     });
   }
 
@@ -97,14 +52,16 @@ export class SearchflightComponent implements OnInit {
     this.searchService.consumeAirportData(value).subscribe((data : any)=>
       this.airports=data
     )
-    alert(JSON.stringify(this.airports));
   }
+
+
   onSubmit()
   {
-    if(this.SearchFlightForm.valid)
-    {
-      alert(JSON.stringify(this.SearchFlightForm.value));
-    }
+    Object.assign(this.SearchFlightForm.value,{Origin:this.SearchFlightForm.value.Origin['AirportCode']});
+    Object.assign(this.SearchFlightForm.value,{Destination:this.SearchFlightForm.value.Destination['AirportCode']});
+    this.searchService.postFlightDetails(this.SearchFlightForm.value).subscribe((res)=>
+        this.consumeData=res
+      );
   }
 
 }
